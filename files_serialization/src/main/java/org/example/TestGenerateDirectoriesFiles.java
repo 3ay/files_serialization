@@ -4,14 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Main {
-    /*
-    В папке Games создайте несколько директорий: src, res, savegames, temp.
-    В каталоге src создайте две директории: main, test.
-    В подкаталоге main создайте два файла: Main.java, Utils.java.
-    В каталог res создайте три директории: drawables, vectors, icons.
-    В директории temp создайте файл temp.txt.
-     */
+public class TestGenerateDirectoriesFiles {
     public static void main(String[] args) {
         StringBuilder log = new StringBuilder();
 

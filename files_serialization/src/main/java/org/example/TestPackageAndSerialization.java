@@ -3,7 +3,7 @@ package org.example;
 import java.util.Arrays;
 import java.util.List;
 
-public class TestGameProgressMethods {
+public class TestPackageAndSerialization {
     public static void main(String[] args) {
         List<String> savedGamesList = Arrays.asList(
                 "src//main//resources//Games//savegames//save1.dat",

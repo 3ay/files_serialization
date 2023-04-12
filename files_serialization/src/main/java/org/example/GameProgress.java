@@ -3,6 +3,7 @@ package org.example;
 import java.io.*;
 import java.util.List;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 public class GameProgress implements Serializable {
@@ -65,5 +66,38 @@ public class GameProgress implements Serializable {
                 System.out.println("Не удалось удалить файл: " + file.getAbsolutePath());
             }
         }
+    }
+    public static void openZip(String zipPath, String toDirPath)
+    {
+        try (ZipInputStream zin = new ZipInputStream(new
+                FileInputStream(zipPath))) {
+            ZipEntry entry;
+            String name;
+            while ((entry = zin.getNextEntry()) != null) {
+                name = entry.getName();
+                FileOutputStream fout = new FileOutputStream(toDirPath + "/" + name);
+                for (int c = zin.read(); c != -1; c = zin.read()) {
+                    fout.write(c);
+                }
+                fout.flush();
+                zin.closeEntry();
+                fout.close();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public static GameProgress openProgress(String pathToSavedGameFile)
+    {
+        GameProgress gameProgress = null;
+        try (FileInputStream fis = new FileInputStream(pathToSavedGameFile);
+        ObjectInputStream ois = new ObjectInputStream(fis)){
+            gameProgress = (GameProgress) ois.readObject();
+        }
+        catch (Exception exception)
+        {
+            System.out.println(exception.getMessage());
+        }
+        return gameProgress;
     }
 }
