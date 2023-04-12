@@ -17,5 +17,6 @@ public class TestPackageAndSerialization {
         GameProgress dwarf = new GameProgress(90, 1, 10, 3);
         dwarf.saveGame(savedGamesList.get(2), dwarf);
         GameProgress.zipFiles("src//main//resources//Games//savegames//zipSaveGames.zip", savedGamesList);
+        GameProgress.deleteFiles(savedGamesList);
     }
 }

@@ -56,7 +56,6 @@ public class GameProgress implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        deleteFiles(savedGamesList);
     }
     public static void deleteFiles (List<String> savedGamesList)
     {
